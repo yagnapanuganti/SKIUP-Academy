@@ -1,0 +1,2489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKIUP Academy – Zero Coding Experience to Software Professional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #1A56FF;
+            --blue-dark: #1040CC;
+            --blue-light: #EEF2FF;
+            --teal: #00D4AA;
+            --teal-light: #E0FBF5;
+            --dark: #0D1117;
+            --gray-900: #111827;
+            --gray-800: #1F2937;
+            --gray-700: #374151;
+            --gray-600: #4B5563;
+            --gray-500: #6B7280;
+            --gray-400: #9CA3AF;
+            --gray-300: #D1D5DB;
+            --gray-200: #E5E7EB;
+            --gray-100: #F3F4F6;
+            --gray-50: #F9FAFB;
+            --white: #FFFFFF;
+            --bg: #F5F6FA;
+            --font-head: 'Sora', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.10);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --radius: 12px;
+            --radius-lg: 20px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--white);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: 22px;
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center; /* Ensures perfect vertical alignment */
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-700);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--blue);
+        }
+
+        .nav-links a.active {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .btn-enroll {
+            background: var(--blue);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: background .2s;
+        }
+
+        .btn-enroll:hover {
+            background: var(--blue-dark);
+        }
+
+        /* ── PAGES ── */
+        .page {
+            display: none;
+            padding-top: 64px;
+            min-height: 100vh;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* ── HERO SHARED ── */
+        .hero {
+            background: var(--bg);
+            padding: 80px 80px 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--teal-light);
+            color: #00A882;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: var(--font-head);
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--gray-900);
+        }
+
+        .hero h1 span { color: var(--blue); }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--gray-600);
+            margin-top: 16px;
+            max-width: 460px;
+            line-height: 1.7;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 13px 26px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: background .2s, transform .15s;
+        }
+
+        .btn-primary:hover {
+            background: var(--blue-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--gray-800);
+            border: 1.5px solid var(--gray-300);
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: border-color .2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--blue);
+            color: var(--blue);
+        }
+
+        .hero-img { position: relative; }
+
+        .hero-img img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+        }
+
+        .hero-badge-float {
+            position: absolute;
+            bottom: 24px;
+            left: -20px;
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 12px 18px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-800);
+            max-width: 240px;
+        }
+
+        .hero-badge-float .icon {
+            width: 32px;
+            height: 32px;
+            background: var(--blue-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        /* ── SECTION SHARED ── */
+        section { padding: 80px 80px; }
+
+        .section-title {
+            font-family: var(--font-head);
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--gray-900);
+            text-align: center;
+        }
+
+        .section-title span { color: var(--blue); }
+
+        .section-sub {
+            font-size: 16px;
+            color: var(--gray-500);
+            text-align: center;
+            margin-top: 10px;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            transition: box-shadow .2s, transform .2s;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .card h3 {
+            font-family: var(--font-head);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.65;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--white);
+            border-top: 1px solid var(--gray-200);
+            padding: 48px 80px 32px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            font-size: 13px;
+            color: var(--gray-500);
+            margin-top: 10px;
+            line-height: 1.7;
+            max-width: 260px;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-head);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--gray-900);
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 14px;
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 14px;
+            color: var(--gray-600);
+            text-decoration: none;
+            margin-bottom: 8px;
+            transition: color .2s;
+        }
+
+        .footer-col a:hover { color: var(--blue); }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-200);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            font-size: 13px;
+            color: var(--gray-400);
+        }
+
+        /* ══════════════════════════════════════
+           PAGE 1: LANDING PAGE
+        ══════════════════════════════════════ */
+        #landing .stats-bar {
+            background: #fff;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        #landing .stat-item {
+            padding: 28px 40px;
+            border-right: 1px solid var(--gray-200);
+        }
+        #landing .stat-item:last-child { border-right: none; }
+        #landing .stat-num {
+            font-family: var(--font-head);
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--blue);
+        }
+        #landing .stat-label {
+            font-size: 13px;
+            color: var(--gray-500);
+            margin-top: 4px;
+        }
+        #landing .why-section { background: var(--bg); }
+        #landing .why-section .badge-label {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--blue);
+            text-align: center;
+            display: block;
+            margin-bottom: 12px;
+        }
+        #landing .card-icon.blue { background: var(--blue-light); }
+        #landing .card-icon.teal { background: var(--teal-light); }
+        #landing .card-icon.orange { background: #FFF4ED; }
+        #landing .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+        #landing .tag {
+            background: var(--gray-100);
+            color: var(--gray-700);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        #landing .careers-card {
+            background: var(--blue);
+            border-radius: var(--radius-lg);
+            color: #fff;
+            padding: 28px;
+        }
+        #landing .careers-card h3 { color: #fff; }
+        #landing .careers-card p { color: rgba(255, 255, 255, .8); }
+        #landing .careers-card .tag { background: rgba(255, 255, 255, .2); color: #fff; }
+        #landing .testimonial-strip {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+        #landing .tcard {
+            background: #fff;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+        }
+        #landing .tcard .stars {
+            color: #F59E0B;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        #landing .tcard blockquote {
+            font-size: 14px;
+            color: var(--gray-700);
+            line-height: 1.7;
+            font-style: italic;
+        }
+        #landing .tcard .author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        #landing .tcard .author .av {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--blue-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--blue);
+        }
+        #landing .tcard .author-info .name {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+        #landing .tcard .author-info .role {
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+        #landing .cta-section {
+            background: var(--blue);
+            color: #fff;
+            text-align: center;
+            border-radius: var(--radius-lg);
+            margin: 0 80px 80px;
+            padding: 60px 40px;
+        }
+        #landing .cta-section h2 {
+            font-family: var(--font-head);
+            font-size: 36px;
+            font-weight: 800;
+        }
+        #landing .cta-section p {
+            font-size: 16px;
+            opacity: .85;
+            margin-top: 10px;
+        }
+        #landing .cta-section .btn-white {
+            background: #fff;
+            color: var(--blue);
+            border: none;
+            border-radius: 8px;
+            padding: 14px 28px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: var(--font-body);
+            margin-top: 28px;
+            margin-right: 12px;
+        }
+        #landing .cta-section .btn-outline-white {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, .5);
+            border-radius: 8px;
+            padding: 12px 26px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-body);
+            margin-top: 28px;
+        }
+
+        /* ══════════════════════════════════════
+           PAGE 2: PROGRAMS
+        ══════════════════════════════════════ */
+        #programs .track-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 48px;
+        }
+        #programs .track-card {
+            background: #fff;
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow .2s, transform .2s;
+        }
+        #programs .track-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        #programs .track-card.featured {
+            background: var(--blue);
+            color: #fff;
+            border-color: var(--blue);
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 40px;
+        }
+        #programs .track-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--blue);
+            background: var(--blue-light);
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 12px;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+        }
+        #programs .track-card.featured .track-label { background: rgba(255, 255, 255, .2); color: #fff; }
+        #programs .track-card h3 {
+            font-family: var(--font-head);
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+        #programs .track-card.featured h3 { color: #fff; font-size: 28px; }
+        #programs .track-card p { font-size: 14px; color: var(--gray-600); line-height: 1.65; }
+        #programs .track-card.featured p { color: rgba(255, 255, 255, .85); }
+        #programs .track-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+        #programs .track-tag {
+            background: var(--gray-100);
+            color: var(--gray-700);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        #programs .track-card.featured .track-tag { background: rgba(255, 255, 255, .2); color: #fff; }
+        #programs .track-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; }
+        #programs .duration { font-size: 13px; color: var(--gray-500); }
+        #programs .track-card.featured .duration { color: rgba(255, 255, 255, .7); }
+        #programs .apply-btn {
+            background: var(--blue);
+            color: #fff;
+            border: none;
+            border-radius: 7px;
+            padding: 9px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-body);
+        }
+        #programs .track-card.featured .apply-btn { background: #fff; color: var(--blue); }
+        #programs .apply-link { color: var(--blue); font-size: 14px; font-weight: 600; text-decoration: none; }
+        #programs .apply-link:hover { text-decoration: underline; }
+        #programs .standards { background: var(--bg); }
+        #programs .std-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            background: #fff;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-top: 40px;
+        }
+        #programs .std-item { padding: 32px 24px; text-align: center; border-right: 1px solid var(--gray-200); }
+        #programs .std-item:last-child { border-right: none; }
+        #programs .std-num { font-family: var(--font-head); font-size: 36px; font-weight: 800; color: var(--blue); }
+        #programs .std-label { font-size: 13px; color: var(--gray-600); margin-top: 6px; }
+        #programs .cta-box {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            text-align: center;
+            margin-top: 48px;
+        }
+        #programs .cta-box h2 { font-family: var(--font-head); font-size: 28px; font-weight: 800; color: var(--gray-900); }
+        #programs .cta-box p { font-size: 15px; color: var(--gray-500); margin-top: 8px; }
+
+        /* ══════════════════════════════════════
+           PAGE 3: HOW IT WORKS
+        ══════════════════════════════════════ */
+        #howitworks .phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 48px; }
+        #howitworks .phase-card { background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 24px; }
+        #howitworks .phase-num {
+            width: 40px; height: 40px; background: var(--blue-light); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--blue); font-weight: 800; font-size: 14px; margin-bottom: 16px;
+        }
+        #howitworks .phase-label { font-size: 11px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+        #howitworks .phase-card h3 { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--gray-900); margin-bottom: 10px; }
+        #howitworks .phase-card p { font-size: 13px; color: var(--gray-600); line-height: 1.65; }
+        #howitworks .model-section { background: var(--bg); }
+        #howitworks .model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 48px; }
+        #howitworks .model-images { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        #howitworks .model-images img { width: 100%; border-radius: var(--radius); object-fit: cover; }
+        #howitworks .model-images img:first-child, #howitworks .model-images img:nth-child(2) { height: 180px; }
+        #howitworks .model-images img:nth-child(3), #howitworks .model-images img:nth-child(4) { height: 140px; }
+        #howitworks .model-points { display: flex; flex-direction: column; gap: 20px; }
+        #howitworks .model-point { display: flex; gap: 14px; }
+        #howitworks .mp-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+        #howitworks .mp-icon.blue { background: var(--blue-light); }
+        #howitworks .mp-icon.teal { background: var(--teal-light); }
+        #howitworks .mp-icon.orange { background: #FFF4ED; }
+        #howitworks .mp-title { font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--gray-900); margin-bottom: 4px; }
+        #howitworks .mp-desc { font-size: 13px; color: var(--gray-600); line-height: 1.65; }
+        #howitworks .faq-list { max-width: 700px; margin: 40px auto 0; }
+        #howitworks .faq-item { border: 1px solid var(--gray-200); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; }
+        #howitworks .faq-q {
+            width: 100%; background: #fff; border: none; text-align: left; padding: 18px 20px;
+            font-size: 15px; font-weight: 600; color: var(--gray-800); cursor: pointer;
+            font-family: var(--font-body); display: flex; justify-content: space-between; align-items: center;
+        }
+        #howitworks .faq-q:hover { background: var(--gray-50); }
+        #howitworks .faq-a { padding: 0 20px 18px; font-size: 14px; color: var(--gray-600); line-height: 1.7; display: none; }
+        #howitworks .faq-item.open .faq-a { display: block; }
+        #howitworks .faq-item.open .faq-arrow { transform: rotate(180deg); }
+        #howitworks .faq-arrow { transition: transform .2s; font-size: 12px; color: var(--gray-400); }
+
+        /* ══════════════════════════════════════
+           PAGE 4: OUTCOMES
+        ══════════════════════════════════════ */
+        #outcomes .stats-hero { display: flex; gap: 40px; margin-top: 32px; }
+        #outcomes .stat-big { font-family: var(--font-head); font-size: 40px; font-weight: 800; color: var(--gray-900); }
+        #outcomes .stat-big span { color: var(--blue); }
+        #outcomes .stat-desc { font-size: 13px; color: var(--gray-500); margin-top: 4px; }
+        #outcomes .employers { background: var(--gray-50); }
+        #outcomes .employer-logos { display: flex; gap: 40px; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
+        #outcomes .employer-logo { font-family: var(--font-head); font-size: 18px; font-weight: 800; color: var(--gray-400); letter-spacing: -0.5px; }
+        #outcomes .story-section { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; margin-top: 48px; }
+        #outcomes .story-img { border-radius: var(--radius-lg); width: 100%; height: 260px; object-fit: cover; }
+        #outcomes .story-info .class { font-size: 12px; color: var(--gray-500); margin-bottom: 10px; }
+        #outcomes .story-info h3 { font-family: var(--font-head); font-size: 22px; font-weight: 800; color: var(--gray-900); }
+        #outcomes .story-info .role { color: var(--blue); font-weight: 600; font-size: 14px; margin-top: 4px; }
+        #outcomes .story-info .journey { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+        #outcomes .journey-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--gray-700); }
+        #outcomes .journey-item .label { font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: .5px; min-width: 40px; }
+        #outcomes .quote-card { background: var(--blue); color: #fff; border-radius: var(--radius-lg); padding: 28px; margin-top: 24px; }
+        #outcomes .quote-card blockquote { font-size: 16px; font-style: italic; line-height: 1.65; }
+        #outcomes .quote-card .qauthor { display: flex; align-items: center; gap: 10px; margin-top: 16px; }
+        #outcomes .quote-card .av { width: 32px; height: 32px; border-radius: 50%; background: rgba(255, 255, 255, .2); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+        #outcomes .quote-card .qname { font-size: 13px; font-weight: 700; }
+        #outcomes .quote-card .qrole { font-size: 12px; opacity: .7; }
+        #outcomes .salary-section { background: var(--bg); }
+        #outcomes .salary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-top: 40px; }
+        #outcomes .salary-bars { background: #fff; border-radius: var(--radius-lg); padding: 28px; border: 1px solid var(--gray-200); }
+        #outcomes .salary-bars h4 { font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--gray-900); margin-bottom: 4px; }
+        #outcomes .salary-bars .avg { font-size: 12px; color: var(--gray-400); margin-bottom: 24px; }
+        #outcomes .bar-row { margin-bottom: 20px; }
+        #outcomes .bar-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--gray-700); margin-bottom: 8px; }
+        #outcomes .bar-label .amount { font-weight: 700; }
+        #outcomes .bar-track { background: var(--gray-200); border-radius: 4px; height: 8px; overflow: hidden; }
+        #outcomes .bar-fill { height: 100%; border-radius: 4px; background: var(--gray-300); }
+        #outcomes .bar-fill.primary { background: var(--blue); }
+        #outcomes .bar-fill.accent { background: var(--teal); }
+        #outcomes .dark-cta { background: var(--dark); border-radius: var(--radius-lg); padding: 48px; color: #fff; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; margin-top: 48px; }
+        #outcomes .dark-cta h2 { font-family: var(--font-head); font-size: 28px; font-weight: 800; }
+        #outcomes .dark-cta p { font-size: 14px; color: rgba(255, 255, 255, .65); margin-top: 8px; }
+        #outcomes .dark-cta-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        #outcomes .dcs { background: rgba(255, 255, 255, .05); border-radius: var(--radius); padding: 20px; text-align: center; }
+        #outcomes .dcs-num { font-family: var(--font-head); font-size: 28px; font-weight: 800; color: var(--teal); }
+        #outcomes .dcs-label { font-size: 12px; color: rgba(255, 255, 255, .6); margin-top: 4px; }
+
+        /* ══════════════════════════════════════
+           PAGE 5: TESTIMONIALS
+        ══════════════════════════════════════ */
+        #testimonials .featured-story { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 48px; }
+        #testimonials .feat-img { position: relative; }
+        #testimonials .feat-img img { width: 100%; height: 340px; object-fit: cover; border-radius: var(--radius-lg); }
+        #testimonials .feat-quote { position: absolute; bottom: 24px; left: 24px; right: 24px; background: var(--blue); color: #fff; border-radius: var(--radius); padding: 16px 20px; font-size: 14px; font-style: italic; font-weight: 500; }
+        #testimonials .feat-quote .qauthor { font-size: 12px; opacity: .8; margin-top: 6px; font-style: normal; }
+        #testimonials .feat-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: #00A882; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 100px; margin-bottom: 14px; }
+        #testimonials .feat-story h2 { font-family: var(--font-head); font-size: 28px; font-weight: 800; color: var(--gray-900); }
+        #testimonials .feat-story p { font-size: 14px; color: var(--gray-600); margin-top: 10px; line-height: 1.7; }
+        #testimonials .feat-metrics { display: flex; gap: 24px; margin-top: 24px; }
+        #testimonials .metric { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 16px 20px; }
+        #testimonials .metric-num { font-family: var(--font-head); font-size: 24px; font-weight: 800; color: var(--blue); }
+        #testimonials .metric-label { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+        #testimonials .video-section { background: var(--bg); }
+        #testimonials .video-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; }
+        #testimonials .video-header h2 { font-family: var(--font-head); font-size: 28px; font-weight: 800; color: var(--gray-900); }
+        #testimonials .video-header p { font-size: 14px; color: var(--gray-500); }
+        #testimonials .view-all { color: var(--blue); font-size: 14px; font-weight: 600; text-decoration: none; }
+        #testimonials .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        #testimonials .video-card { border-radius: var(--radius-lg); overflow: hidden; position: relative; cursor: pointer; }
+        #testimonials .video-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
+        #testimonials .video-overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, .4); display: flex; align-items: center; justify-content: center; }
+        #testimonials .play-btn { width: 48px; height: 48px; background: rgba(255, 255, 255, .9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--blue); }
+        #testimonials .video-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 16px; background: linear-gradient(transparent, rgba(0, 0, 0, .8)); color: #fff; }
+        #testimonials .video-info .vname { font-weight: 700; font-size: 14px; }
+        #testimonials .video-info .vrole { font-size: 12px; opacity: .8; }
+        #testimonials .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+        #testimonials .review-card { background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 24px; }
+        #testimonials .review-card .rauthor { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+        #testimonials .review-card .rav { width: 38px; height: 38px; border-radius: 50%; background: var(--blue-light); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: var(--blue); flex-shrink: 0; }
+        #testimonials .review-card .rname { font-weight: 700; font-size: 14px; color: var(--gray-900); }
+        #testimonials .review-card .rprev { font-size: 12px; color: var(--gray-500); }
+        #testimonials .review-card blockquote { font-size: 13px; color: var(--gray-700); line-height: 1.7; font-style: italic; }
+        #testimonials .review-card .company-badge { margin-top: 14px; display: inline-block; }
+        #testimonials .company-badge .role-tag { font-size: 11px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: .4px; }
+        #testimonials .company-badge .company { font-size: 13px; font-weight: 600; color: var(--gray-700); }
+        #testimonials .cta-strip { background: var(--blue); border-radius: var(--radius-lg); padding: 60px 40px; text-align: center; margin: 0 80px 80px; }
+        #testimonials .cta-strip h2 { font-family: var(--font-head); font-size: 32px; font-weight: 800; color: #fff; }
+        #testimonials .cta-strip p { font-size: 15px; color: rgba(255, 255, 255, .8); margin-top: 8px; }
+        #testimonials .cta-strip .cta-btns { display: flex; gap: 12px; justify-content: center; margin-top: 28px; }
+        #testimonials .btn-white-teal { background: var(--teal); color: #fff; border: none; border-radius: 8px; padding: 13px 26px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: var(--font-body); }
+        #testimonials .small-note { font-size: 12px; color: rgba(255, 255, 255, .55); margin-top: 12px; }
+
+        /* ══════════════════════════════════════
+           PAGE 6: SCHEDULE A CALL
+        ══════════════════════════════════════ */
+        #schedule .time-slot.inactive { opacity: 0.4; pointer-events: none; border-color: var(--gray-200); background: var(--gray-50); color: var(--gray-400); }
+        #schedule .schedule-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 60px 80px; }
+        #schedule .cal-card { background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 28px; }
+        #schedule .cal-card h3 { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--gray-900); margin-bottom: 4px; }
+        #schedule .cal-card .duration { font-size: 13px; color: var(--gray-500); margin-bottom: 20px; }
+        #schedule .cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        #schedule .cal-nav { background: none; border: 1px solid var(--gray-200); border-radius: 6px; width: 28px; height: 28px; cursor: pointer; font-size: 12px; }
+        #schedule .cal-days { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; }
+        #schedule .cal-day-header { font-size: 12px; font-weight: 600; color: var(--gray-400); padding: 8px 0; }
+        #schedule .cal-day { font-size: 14px; color: var(--gray-700); padding: 10px 0; text-align: center; border-radius: 8px; cursor: pointer; }
+        #schedule .cal-day:hover:not(.inactive):not(.selected) { background: var(--blue-light); color: var(--blue); }
+        #schedule .cal-day.inactive { color: var(--gray-300); cursor: default; }
+        #schedule .cal-day.selected { background: var(--blue); color: #fff; font-weight: 700; }
+        #schedule .times-label { font-size: 13px; color: var(--gray-600); margin: 20px 0 12px; font-weight: 500; }
+        #schedule .time-slots { display: flex; gap: 10px; flex-wrap: wrap; }
+        #schedule .time-slot { border: 1.5px solid var(--gray-200); border-radius: 8px; padding: 9px 16px; font-size: 13px; font-weight: 600; color: var(--gray-700); cursor: pointer; background: #fff; font-family: var(--font-body); transition: all .15s; }
+        #schedule .time-slot:hover, #schedule .time-slot.selected { border-color: var(--blue); color: var(--blue); background: var(--blue-light); }
+        #schedule .details-card { background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 28px; }
+        #schedule .details-card h3 { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--gray-900); margin-bottom: 20px; }
+        #schedule .form-group { margin-bottom: 16px; }
+        #schedule .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--gray-700); margin-bottom: 6px; }
+        #schedule .form-group input, #schedule .form-group select { width: 100%; border: 1.5px solid var(--gray-200); border-radius: 8px; padding: 11px 14px; font-size: 14px; font-family: var(--font-body); color: var(--gray-800); background: #fff; outline: none; transition: border-color .15s; }
+        #schedule .form-group input:focus, #schedule .form-group select:focus { border-color: var(--blue); }
+        #schedule .confirm-btn { width: 100%; background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 14px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: var(--font-body); margin-top: 8px; }
+        #schedule .advisor-card { background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); overflow: hidden; }
+        #schedule .advisor-card img { width: 100%; height: 220px; object-fit: cover; display: block; }
+        #schedule .advisor-caption { padding: 16px 20px; font-size: 14px; font-style: italic; color: var(--gray-700); font-weight: 500; }
+        #schedule .why-speak { padding: 80px; }
+        #schedule .why-speak-title { font-family: var(--font-head); font-size: 28px; font-weight: 800; color: var(--gray-900); }
+        #schedule .why-speak-sub { font-size: 15px; color: var(--gray-500); margin-top: 8px; }
+        #schedule .why-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
+        #schedule .why-card { background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 24px; }
+        #schedule .why-card .wicon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+        #schedule .why-card h4 { font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--gray-900); margin-bottom: 8px; }
+        #schedule .why-card p { font-size: 13px; color: var(--gray-600); line-height: 1.65; }
+
+        /* ══════════════════════════════════════
+           PAGE 7: ENROLLMENT FORM
+        ══════════════════════════════════════ */
+        #enrollment .enroll-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; padding: 60px 80px; }
+        #enrollment .why-box { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 20px; }
+        #enrollment .why-box h3 { font-family: var(--font-head); font-size: 16px; font-weight: 800; color: var(--gray-900); margin-bottom: 16px; }
+        #enrollment .why-point { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; }
+        #enrollment .why-point .wp-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+        #enrollment .why-point .wp-title { font-size: 14px; font-weight: 700; color: var(--gray-900); margin-bottom: 2px; }
+        #enrollment .why-point .wp-desc { font-size: 12px; color: var(--gray-500); line-height: 1.5; }
+        #enrollment .cohort-img { border-radius: var(--radius-lg); overflow: hidden; position: relative; }
+        #enrollment .cohort-img img { width: 100%; height: 180px; object-fit: cover; display: block; }
+        #enrollment .cohort-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0, 0, 0, .7)); padding: 20px 16px 14px; }
+        #enrollment .cohort-overlay h4 { color: #fff; font-weight: 700; font-size: 15px; }
+        #enrollment .cohort-overlay p { color: rgba(255, 255, 255, .75); font-size: 12px; margin-top: 2px; }
+        #enrollment .form-card { background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 36px; }
+        #enrollment .form-step { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+        #enrollment .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0; }
+        #enrollment .step-title { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--gray-900); }
+        #enrollment .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        #enrollment .fg { margin-bottom: 16px; }
+        #enrollment .fg label { display: block; font-size: 13px; font-weight: 600; color: var(--gray-700); margin-bottom: 6px; }
+        #enrollment .fg input, #enrollment .fg select, #enrollment .fg textarea { width: 100%; border: 1.5px solid var(--gray-200); border-radius: 8px; padding: 11px 14px; font-size: 14px; font-family: var(--font-body); color: var(--gray-800); background: #fff; outline: none; transition: border-color .15s; resize: vertical; }
+        #enrollment .fg input:focus, #enrollment .fg select:focus, #enrollment .fg textarea:focus { border-color: var(--blue); }
+        #enrollment .program-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+        #enrollment .prog-opt { border: 1.5px solid var(--gray-200); border-radius: var(--radius); padding: 16px; cursor: pointer; transition: all .15s; }
+        #enrollment .prog-opt:hover, #enrollment .prog-opt.selected { border-color: var(--blue); background: var(--blue-light); }
+        #enrollment .prog-opt h4 { font-size: 14px; font-weight: 700; color: var(--gray-900); margin-bottom: 4px; }
+        #enrollment .prog-opt p { font-size: 12px; color: var(--gray-500); }
+        #enrollment .prog-opt.selected h4 { color: var(--blue); }
+        #enrollment .exp-options { display: flex; gap: 10px; margin-bottom: 16px; }
+        #enrollment .exp-opt { border: 1.5px solid var(--gray-200); border-radius: 8px; padding: 9px 18px; font-size: 13px; font-weight: 600; color: var(--gray-700); cursor: pointer; background: #fff; font-family: var(--font-body); transition: all .15s; }
+        #enrollment .exp-opt:hover, #enrollment .exp-opt.selected { border-color: var(--teal); color: #00A882; background: var(--teal-light); }
+        #enrollment .divider { border: none; border-top: 1px solid var(--gray-200); margin: 28px 0; }
+        #enrollment .submit-btn { width: 100%; background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 16px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: var(--font-body); margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        #enrollment .submit-btn:hover { background: var(--blue-dark); }
+        #enrollment .form-disclaimer { font-size: 12px; color: var(--gray-400); text-align: center; margin-top: 12px; line-height: 1.5; }
+        #enrollment .form-disclaimer a { color: var(--blue); text-decoration: underline; }
+
+        /* ══════════════════════════════════════
+           PAGE 8: ENROLLMENT SUCCESS
+        ══════════════════════════════════════ */
+        #success { background: linear-gradient(135deg, #F0F4FF 0%, #E8F5F2 100%); }
+        #success .success-content { max-width: 700px; margin: 0 auto; text-align: center; padding: 80px 40px 60px; }
+        #success .success-icon { width: 88px; height: 88px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; box-shadow: var(--shadow-md); position: relative; }
+        #success .success-icon .check { font-size: 36px; color: var(--blue); }
+        #success .success-icon .confetti { position: absolute; top: -8px; right: -8px; font-size: 24px; }
+        #success .success-content h1 { font-family: var(--font-head); font-size: 44px; font-weight: 800; color: var(--gray-900); }
+        #success .success-content p { font-size: 16px; color: var(--gray-600); margin-top: 14px; line-height: 1.7; }
+        #success .next-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; text-align: left; }
+        #success .next-card { background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 24px; }
+        #success .next-card .nc-icon { font-size: 24px; color: var(--blue); margin-bottom: 14px; }
+        #success .next-card h3 { font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--gray-900); margin-bottom: 8px; }
+        #success .next-card p { font-size: 13px; color: var(--gray-600); line-height: 1.65; }
+        #success .next-card a { display: inline-block; color: var(--blue); font-size: 13px; font-weight: 700; text-decoration: none; margin-top: 12px; }
+        #success .next-card a:hover { text-decoration: underline; }
+        #success .success-btns { display: flex; gap: 12px; justify-content: center; margin-top: 40px; }
+        #success .btn-teal { background: var(--teal); color: #fff; border: none; border-radius: 8px; padding: 13px 26px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: var(--font-body); }
+        #success .success-image { max-width: 800px; margin: 0 auto; padding: 0 40px 80px; }
+        #success .success-image img { width: 100%; border-radius: var(--radius-lg); height: 240px; object-fit: cover; opacity: .7; filter: grayscale(30%); }
+
+        /* ══════════════════════════════════════
+           RESPONSIVE DESIGN
+        ══════════════════════════════════════ */
+
+        /* TABLET & SMALLER DESKTOPS (Max 900px) */
+        @media (max-width: 900px) {
+            section { padding: 60px 32px; }
+            nav { padding: 0 20px; }
+            .nav-links { display: none; }
+            .hero { padding: 100px 32px 60px; grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .hero p { margin: 16px auto 0; }
+            .hero-btns { justify-content: center; }
+            .grid-3, .grid-2, #programs .track-grid, #howitworks .phases, #schedule .why-cards, #testimonials .reviews-grid, #testimonials .video-grid, #success .next-cards { grid-template-columns: repeat(2, 1fr); }
+            #landing .cta-section, #testimonials .cta-strip { margin: 0 32px 60px; padding: 40px 24px; }
+            #schedule .schedule-layout, #enrollment .enroll-layout, #outcomes .salary-grid, #outcomes .story-section, #howitworks .model-grid, #testimonials .featured-story { grid-template-columns: 1fr; padding: 40px 32px; gap: 48px; }
+            #programs .track-card.featured { grid-template-columns: 1fr; text-align: center; gap: 24px; }
+            #programs .track-card.featured .track-tags { justify-content: center; }
+            #programs .std-grid { grid-template-columns: repeat(2, 1fr); }
+            #programs .std-item { border-bottom: 1px solid var(--gray-200); }
+            #programs .std-item:nth-child(2), #programs .std-item:nth-child(4) { border-right: none; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* MOBILE PHONES (Max 600px) */
+        @media (max-width: 600px) {
+            section { padding: 40px 20px; }
+            .hero { padding: 90px 20px 40px; }
+            .hero h1 { font-size: 36px; }
+            .section-title { font-size: 28px; }
+            .grid-3, .grid-2, #programs .track-grid, #howitworks .phases, #schedule .why-cards, #testimonials .reviews-grid, #testimonials .video-grid, #success .next-cards { grid-template-columns: 1fr; }
+            #landing .stats-bar { grid-template-columns: 1fr; text-align: center; }
+            #landing .stat-item { border-right: none; border-bottom: 1px solid var(--gray-200); }
+            #landing .stat-item:last-child { border-bottom: none; }
+            #landing .testimonial-strip { grid-template-columns: 1fr; }
+            #landing .cta-section, #testimonials .cta-strip { margin: 0 20px 40px; }
+            #howitworks .model-images { grid-template-columns: 1fr; }
+            #howitworks .model-images img { height: auto !important; aspect-ratio: 16/9; }
+            #outcomes .stats-hero { flex-direction: column; gap: 24px; text-align: center; }
+            #outcomes .dark-cta { grid-template-columns: 1fr; padding: 32px 20px; }
+            #outcomes .dark-cta-stats { grid-template-columns: 1fr; }
+            #programs .std-grid { grid-template-columns: 1fr; }
+            #programs .std-item { border-right: none; border-bottom: 1px solid var(--gray-200); }
+            #programs .cta-box { padding: 32px 20px; }
+            #testimonials .feat-metrics { flex-direction: column; gap: 12px; }
+            #testimonials .video-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+            #testimonials .featured-story { padding: 40px 20px; }
+            #schedule .schedule-layout, #enrollment .enroll-layout { padding: 40px 20px; }
+            #schedule .cal-days { font-size: 13px; }
+            #schedule .time-slots { justify-content: center; }
+            #enrollment .form-row, #enrollment .program-options { grid-template-columns: 1fr; }
+            #enrollment .exp-options { flex-wrap: wrap; }
+            #success .success-content h1 { font-size: 32px; }
+            #success .success-btns { flex-direction: column; width: 100%; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+        }
+
+        /* ── MOBILE MENU STYLES ── */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--gray-800);
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        @media (max-width: 900px) {
+            nav { justify-content: flex-start; }
+            .mobile-menu-btn { display: block; order: 3; }
+            .btn-enroll {
+                order: 2;
+                margin-left: auto;
+                margin-right: 20px;
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+            .nav-links {
+                position: absolute;
+                top: 64px;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(12px);
+                flex-direction: column;
+                align-items: center;
+                gap: 24px;
+                padding: 32px 0;
+                border-bottom: 1px solid var(--gray-200);
+                box-shadow: var(--shadow-md);
+                display: none;
+            }
+            .nav-links.open { display: flex; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a class="nav-logo" href="#" onclick="showPage('landing')">SKIUP</a>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+        <ul class="nav-links">
+            <li><a href="#" id="nav-programs" onclick="showPage('programs')">Programs</a></li>
+            <li><a href="#" id="nav-howitworks" onclick="showPage('howitworks')">How it Works</a></li>
+            <li><a href="#" id="nav-outcomes" onclick="showPage('outcomes')">Outcomes</a></li>
+            <li><a href="#" id="nav-testimonials" onclick="showPage('testimonials')">Success Stories</a></li>
+        </ul>
+        <button class="btn-enroll" onclick="showPage('enrollment')">Enroll Now</button>
+    </nav>
+
+    <div id="landing" class="page active">
+        <div class="hero">
+            <div>
+                <span class="badge">For Non-Technical Graduates</span>
+                <h1>Zero Coding Experience<br>to <span>Software</span><br><span>Professional.</span></h1>
+                <p>Our SKIUP program bridges the gap for non-technical backgrounds with hands-on real-world projects. Transition your career with confidence.</p>
+                <div class="hero-btns">
+                    <button class="btn-primary" onclick="showPage('howitworks')">View Curriculum →</button>
+                    <button class="btn-secondary" onclick="showPage('schedule')">Schedule a Call</button>
+                </div>
+            </div>
+            <div class="hero-img">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=80" alt="Students collaborating">
+                <div class="hero-badge-float">
+                    <div class="icon">🛡️</div>
+                    <div>
+                        <div style="font-size:11px;color:var(--gray-500);font-weight:600;">Hired by Top Tech</div>
+                        <div style="font-size:12px;color:var(--gray-700);">94% land roles within 4 months</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-num">94%</div>
+                <div class="stat-label">Placement Rate within 6 months</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">45%</div>
+                <div class="stat-label">Average Salary Increase</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">3-4 LPA</div>
+                <div class="stat-label">Avg. Starting Salary</div>
+            </div>
+        </div>
+
+        <section class="why-section">
+            <div style="text-align:center;margin-bottom:8px;"><span class="badge-label" style="color:var(--blue);font-size:13px;font-weight:600;">Why non-tech grads choose SKIUP.</span></div>
+            <div class="section-title">We don't just teach code. We build careers.</div>
+            <p class="section-sub">Focusing on the specific hurdles non-technical professionals face.</p>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon blue">🔗</div>
+                    <h3>Bridging the Gap</h3>
+                    <p>We start from the absolute basics, assuming zero prior knowledge. Our curriculum translates complex technical jargon into intuitive concepts.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon teal">🖥️</div>
+                    <h3>Project-Based Learning</h3>
+                    <p>You're not just watching videos. You're building enterprise-grade applications using the same tools professional developers use every day.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon orange">🎯</div>
+                    <h3>Placement Ready</h3>
+                    <p>Soft skills, portfolio building, and mock interviews. We ensure you're ready to communicate your value to top engineering managers.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Choose Your Career Path</div>
+            <p class="section-sub">Specialized tracks designed for the modern job market.</p>
+            <div class="grid-3" style="margin-top:40px;">
+                <div class="card">
+                    <div class="card-icon blue">🖥️</div>
+                    <h3>Frontend</h3>
+                    <p>Master React, Vue, and modern CSS to build stunning user interfaces.</p>
+                    <div class="tags"><span class="tag">REACT</span><span class="tag">TAILWIND</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-icon teal">⚙️</div>
+                    <h3>Backend</h3>
+                    <p>Dive into Node.js, Python, and robust database architecture.</p>
+                    <div class="tags"><span class="tag">NODE.JS</span><span class="tag">POSTGRESQL</span></div>
+                </div>
+                <div class="careers-card card">
+                    <div style="font-size:28px;margin-bottom:10px;">⚡</div>
+                    <h3>Fullstack</h3>
+                    <p>The complete package. End-to-end development from database to UI.</p>
+                    <div style="margin-top:10px;font-size:13px;color:rgba(255,255,255,.7);">Duration</div>
+                    <div style="font-weight:800;font-size:18px;color:#fff;">24 Weeks</div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background:var(--bg);">
+            <div class="section-title">Hear from our Alumni</div>
+            <div class="testimonial-strip">
+                <div class="tcard">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>"I came from a hospitality background and thought I'd never understand code. The mentors at SKIUP made the transition so logical and supported me every step of the way."</blockquote>
+                    <div class="author">
+                        <div class="av">SJ</div>
+                        <div class="author-info">
+                            <div class="name">Sarah Jenkins</div>
+                            <div class="role">Frontend Developer @ TechNova</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tcard">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>"The focus on projects is what did it for me. By the time I interviewed, I had 3 real-world apps to show. I got the job not just because of my code, but because I understood the workflow."</blockquote>
+                    <div class="author">
+                        <div class="av">DC</div>
+                        <div class="author-info">
+                            <div class="name">David Chen</div>
+                            <div class="role">Fullstack Engineer @ DataFlow</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <h2>Ready to Write Your Story?</h2>
+            <p>Applications for our Summer Cohort are now open. No technical background required—just grit and curiosity.</p>
+            <button class="btn-white" onclick="showPage('enrollment')">Join the Next Cohort</button>
+            <button class="btn-outline-white" onclick="showPage('schedule')">Talk to an Alumni</button>
+            <div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:14px;">Limited to 25 seats per track. Early bird discount ends in 4 days.</div>
+        </div>
+
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-logo">SKIUP</div>
+                    <p>Empowering the next generation of digital creators through immersive, high-impact technical training.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <a href="#" onclick="showPage('programs')">Programs</a>
+                    <a href="#" onclick="showPage('howitworks')">How It Works</a>
+                    <a href="#" onclick="showPage('outcomes')">Outcomes</a>
+                    <a href="#" onclick="showPage('testimonials')">Success Stories</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
+                    <a href="#" onclick="showPage('terms')">Terms of Service</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">YouTube</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SKIUP Academy. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="programs" class="page">
+        <div class="hero">
+            <div>
+                <span class="badge">Designed for Non-Technical Graduates</span>
+                <h1>Your Journey into <span>Software Architecture</span> Begins Here.</h1>
+                <p>We don't just teach code. We provide a boutique environment where career changers master the engineering principles used at top-tier tech firms, starting from absolute zero.</p>
+                <div class="hero-btns">
+                    <button class="btn-primary" onclick="showPage('enrollment')">Enroll Now</button>
+                    <button class="btn-secondary" onclick="showPage('schedule')">Schedule a Call</button>
+                </div>
+            </div>
+            <div class="hero-img">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=700&q=80" alt="Learning environment">
+                <div class="hero-badge-float">
+                    <div class="icon">📈</div>
+                    <div>
+                        <div style="font-size:11px;color:var(--gray-500);font-weight:700;">94% TRANSITION RATE</div>
+                        <div style="font-size:12px;color:var(--gray-700);">Our graduates move from humanities to engineering roles</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="career-tracks">
+            <div class="section-title">Select Your Career Track</div>
+            <p class="section-sub">Every program is built around the "Atelier" model: small cohorts, heavy mentorship, and production-ready portfolio builds.</p>
+            <div style="text-align:right;margin-top:-20px;"><span style="font-size:13px;color:var(--teal);font-weight:700;">● Enrollment Open</span></div>
+            <div class="track-grid">
+                <div class="track-card">
+                    <div><span class="track-label">TRACK 01 · 12 Weeks</span></div>
+                    <h3>Frontend Architecture</h3>
+                    <p>Master the art of building scalable, accessible, and high-performance user interfaces. This track transforms you into a UX Engineer capable of leading design systems at scale.</p>
+                    <div class="track-tags">
+                        <span class="track-tag">React</span><span class="track-tag">Design Systems</span>
+                        <span class="track-tag">UX Engineering</span><span class="track-tag">TypeScript</span>
+                    </div>
+                    <div class="track-footer">
+                        <span class="duration">Career Path: Senior UI Developer</span>
+                        <button class="apply-btn" onclick="showPage('enrollment')">Apply Now</button>
+                    </div>
+                </div>
+                <div class="track-card">
+                    <div><span class="track-label">TRACK 04 · 12 Weeks</span></div>
+                    <h3>Software Testing & Quality</h3>
+                    <p>Become the guardian of code quality. Master automation frameworks and CI/CD pipelines to ensure flawless deployments.</p>
+                    <div class="track-tags">
+                        <span class="track-tag">Automation</span><span class="track-tag">CI/CD</span>
+                        <span class="track-tag">QA Architecture</span>
+                    </div>
+                    <div class="track-footer">
+                        <span class="duration">Career Path: QA Engineer</span>
+                        <a class="apply-link" href="#" onclick="showPage('enrollment')">Apply Now →</a>
+                    </div>
+                </div>
+                <div class="track-card">
+                    <div><span class="track-label">TRACK 02 · 16 Weeks</span></div>
+                    <h3>Backend Engineering</h3>
+                    <p>Build the nervous systems of modern applications. Dive deep into database architecture, server-side logic, and API design.</p>
+                    <div class="track-tags">
+                        <span class="track-tag">Node.js</span><span class="track-tag">Python</span>
+                        <span class="track-tag">PostgreSQL</span>
+                    </div>
+                    <div class="track-footer">
+                        <span class="duration">Career: Solutions Architect</span>
+                        <button class="apply-btn" onclick="showPage('enrollment')">Apply Now</button>
+                    </div>
+                </div>
+                <div class="track-card">
+                    <div><span class="track-label">TRACK 05 · 16 Weeks</span></div>
+                    <h3>Data Analytics</h3>
+                    <p>Turn raw numbers into strategic power. Master the tools needed to predict trends and visualize business intelligence.</p>
+                    <div class="track-tags">
+                        <span class="track-tag">ML</span><span class="track-tag">BI Tools</span>
+                        <span class="track-tag">Tableau</span>
+                    </div>
+                    <div class="track-footer">
+                        <span class="duration">Career: Data Strategist</span>
+                        <a class="apply-link" href="#" onclick="showPage('enrollment')">Apply Now →</a>
+                    </div>
+                </div>
+                <div class="track-card featured">
+                    <div>
+                        <div><span class="track-label">FLAGSHIP TRACK · 24 Weeks</span></div>
+                        <h3>Fullstack Core Mastery</h3>
+                        <p>Our most intensive program. An end-to-end immersion from pixel-perfect UI engineering to robust database management. Designed to produce "Complete Engineers" who can build entire startups solo.</p>
+                        <div class="track-tags">
+                            <span class="track-tag">Next.js</span><span class="track-tag">Cloud Infra</span>
+                            <span class="track-tag">DevOps</span><span class="track-tag">App Logic</span>
+                        </div>
+                        <button class="apply-btn" style="margin-top:20px;" onclick="showPage('enrollment')">Start Your Mastery</button>
+                    </div>
+                    <div style="width:180px;height:180px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:64px;flex-shrink:0;">⚡</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="standards">
+            <div class="section-title">The Atelier Standards</div>
+            <div class="std-grid">
+                <div class="std-item">
+                    <div class="std-num">1:8</div>
+                    <div class="std-label">Mentor-Student Ratio</div>
+                </div>
+                <div class="std-item">
+                    <div class="std-num">100%</div>
+                    <div class="std-label">Project Based</div>
+                </div>
+                <div class="std-item">
+                    <div class="std-num">600+</div>
+                    <div class="std-label">Engineering Hours</div>
+                </div>
+                <div class="std-item">
+                    <div class="std-num">24/7</div>
+                    <div class="std-label">Laboratory Access</div>
+                </div>
+            </div>
+            <div class="cta-box">
+                <h2>Ready to transition from spectator to builder?</h2>
+                <p>Applications for our Fall Cohort close in 14 days. Secure your spot in the laboratory today.</p>
+                <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;">
+                    <button class="btn-primary" onclick="showPage('enrollment')">Apply for Admission</button>
+                    <button class="btn-secondary" onclick="showPage('schedule')">Schedule a Consult 📞</button>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-logo">SKIUP</div>
+                    <p>The Digital Atelier for registered technology software architects.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Program Tracks</h4>
+                    <a href="#career-tracks" onclick="scrollToSection('programs', 'career-tracks'); return false;">Frontend Engineering</a>
+                    <a href="#career-tracks" onclick="scrollToSection('programs', 'career-tracks'); return false;">Backend Engineer</a>
+                    <a href="#career-tracks" onclick="scrollToSection('programs', 'career-tracks'); return false;">Data Analyst</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Academy</h4>
+                    <a href="#phase-evolution" onclick="scrollToSection('howitworks', 'phase-evolution'); return false;">Curriculum Guide</a>
+                    <a href="#">Careers</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal & Support</h4>
+                    <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
+                    <a href="#" onclick="showPage('terms')">Terms of Service</a>
+                    <a href="#">Contact Support</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SKIUP Academy. The Digital Atelier for Tech Transition.</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="howitworks" class="page">
+        <div class="hero">
+            <div>
+                <span class="badge">The Career Pivot</span>
+                <h1>How <span>SKIUP</span> Transforms Your Career</h1>
+                <p>We bridge the gap between your non-technical background and the high-growth tech industry. A curated journey designed for minds that think differently.</p>
+                <div class="hero-btns">
+                    <button class="btn-primary" onclick="showPage('enrollment')">Start Your Journey</button>
+                    <button class="btn-secondary" onclick="showPage('programs')">Explore Programs →</button>
+                </div>
+            </div>
+            <div class="hero-img">
+                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=700&q=80" alt="Career transformation">
+                <div class="hero-badge-float">
+                    <div class="icon">📍</div>
+                    <div>
+                        <div style="font-size:11px;color:var(--gray-500);font-weight:700;">Zero Code to Hire</div>
+                        <div style="font-size:12px;color:var(--gray-700);">"I went from Marketing major to Junior Frontend Dev in 6 months"</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="phase-evolution">
+            <div class="section-title">The 4-Phase Evolution</div>
+            <p class="section-sub">Our curriculum is scientifically structured to build muscle memory and architectural thinking from day one.</p>
+            <div class="phases">
+                <div class="phase-card">
+                    <div class="phase-num">⬡</div>
+                    <div class="phase-label">PHASE 1</div>
+                    <h3>Foundations</h3>
+                    <p>Master the logic of the web. We start with the 'Why' before the 'How', ensuring you understand syntax and structure deeply.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-num">Λ</div>
+                    <div class="phase-label">PHASE 2</div>
+                    <h3>Deep Dive</h3>
+                    <p>Specialize in your chosen track. Whether it's Frontend, Backend, or UI/UX, you'll master the industry-standard toolkits.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-num">✦</div>
+                    <div class="phase-label">PHASE 3</div>
+                    <h3>Real-World Studio</h3>
+                    <p>No more toy projects. Work in agile squads to build functional products for actual partner businesses in our studio.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-num">🚀</div>
+                    <div class="phase-label">PHASE 4</div>
+                    <h3>Placement Ready</h3>
+                    <p>Refine your portfolio, master the technical interview, and get matched with our network of top-tier hiring partners.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="model-section">
+            <div class="section-title">The "Digital Atelier" Learning Model</div>
+            <div class="model-grid">
+                <div class="model-images">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&q=80" alt="Code">
+                    <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=400&q=80" alt="Team">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80" alt="Collaboration">
+                    <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=400&q=80" alt="Meeting">
+                </div>
+                <div class="model-points">
+                    <div class="model-point">
+                        <div class="mp-icon blue">👨‍🏫</div>
+                        <div>
+                            <div class="mp-title">Mentor-Led Apprenticeship</div>
+                            <div class="mp-desc">Forget mass-recorded videos. You work directly with Industry Leads who treat you like a junior developer, not a student.</div>
+                        </div>
+                    </div>
+                    <div class="model-point">
+                        <div class="mp-icon teal">📦</div>
+                        <div>
+                            <div class="mp-title">Project-First Philosophy</div>
+                            <div class="mp-desc">We prioritize output over input. Every week you ship code, contributing to a professional portfolio that speaks louder than a resume.</div>
+                        </div>
+                    </div>
+                    <div class="model-point">
+                        <div class="mp-icon orange">🧠</div>
+                        <div>
+                            <div class="mp-title">Curated for Non-Tech Minds</div>
+                            <div class="mp-desc">We translate abstract concepts into mental models that resonate with humanities and business backgrounds.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="section-title">Your Questions, Answered</div>
+            <p class="section-sub">Everything you need to know about starting your new chapter.</p>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-q" onclick="toggleFaq(this)">Do I need a strong math background? <span class="faq-arrow">▾</span></button>
+                    <div class="faq-a">Not at all. Our curriculum is specifically designed for non-technical minds. We focus on logical thinking and problem-solving, not advanced mathematics. Most of our students come from arts, business, and social science backgrounds.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" onclick="toggleFaq(this)">How long does the entire program take? <span class="faq-arrow">▾</span></button>
+                    <div class="faq-a">Programs range from 12 to 24 weeks depending on your chosen track. The Fullstack Core Mastery is our most intensive at 24 weeks, while specialized tracks like Frontend Architecture take 12 weeks.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" onclick="toggleFaq(this)">What kind of job support do you provide? <span class="faq-arrow">▾</span></button>
+                    <div class="faq-a">We provide end-to-end placement support including portfolio reviews, mock interviews with industry professionals, resume coaching, LinkedIn optimization, and direct introductions to our network of 150+ hiring partners.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" onclick="toggleFaq(this)">Can I keep working while doing this? <span class="faq-arrow">▾</span></button>
+                    <div class="faq-a">Yes! Many of our students continue working part-time during the program. We offer flexible scheduling with evening and weekend cohorts. However, we recommend dedicating at least 20-25 hours per week to get the most out of the curriculum.</div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background:var(--blue);border-radius:var(--radius-lg);margin:0 80px 80px;padding:60px 40px;text-align:center;">
+            <h2 style="font-family:var(--font-head);font-size:32px;font-weight:800;color:#fff;">Ready to Rewrite Your Story?</h2>
+            <p style="font-size:15px;color:rgba(255,255,255,.8);margin-top:8px;">Join the next cohort of non-technical graduates who are now leading tech teams worldwide.</p>
+            <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;">
+                <button class="btn-primary" style="background:#00D4AA;color:#fff;" onclick="showPage('enrollment')">Start Your Journey</button>
+                <button class="btn-secondary" style="border-color:rgba(255,255,255,.4);color:#fff;" onclick="showPage('schedule')">Talk to an Advisor</button>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-logo">SKIUP</div>
+                    <p>Empowering non-technical graduates to master the digital landscape through elite, project-based apprenticeship.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="#">Contact Us</a>
+                    <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
+                    <a href="#" onclick="showPage('terms')">Terms of Service</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Programs</h4>
+                    <a href="#">Frontend Atelier</a>
+                    <a href="#">Backend Systems</a>
+                    <a href="#">UI/UX Craftmanship</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Social</h4>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SKIUP Academy. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="outcomes" class="page">
+        <div class="hero">
+            <div>
+                <span class="badge">Proven Trajectories</span>
+                <h1>Your Success is Our <span>Greatest Achievement</span></h1>
+                <p>We don't just teach code; we engineer careers. Our graduates bridge the gap between non-technical backgrounds and high-impact roles in the world's leading tech ecosystems.</p>
+                <div class="stats-hero">
+                    <div class="stat-box">
+                        <div class="stat-big">94<span>%</span></div>
+                        <div class="stat-desc">Placement Rate within 6 months</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-big">45<span>%</span></div>
+                        <div class="stat-desc">Average Salary Increase</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-big" style="font-size:28px;">3-4LPA</div>
+                        <div class="stat-desc">Avg. Starting Salary</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-img">
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=700&q=80" alt="Team success">
+                <div class="hero-badge-float">
+                    <div class="icon">🎖️</div>
+                    <div>
+                        <div style="font-size:11px;color:var(--gray-500);font-weight:700;">CAREER MILESTONE</div>
+                        <div style="font-size:12px;color:var(--gray-700);">"I went from waiting tables to a Full Stack role at Stripe in just 9 months."</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="employers">
+            <div style="font-size:12px;font-weight:700;color:var(--gray-400);text-align:center;letter-spacing:1px;margin-bottom:24px;">WHERE OUR ALUMNI WORK</div>
+            <div class="employer-logos">
+                <div class="employer-logo">GOOGLE</div>
+                <div class="employer-logo">Deloitte</div>
+                <div class="employer-logo">TCS</div>
+                <div class="employer-logo">AMAZON</div>
+                <div class="employer-logo">CAPGEMINI</div>
+                <div class="employer-logo">NOTION</div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">From Hospitality to Engineering</div>
+            <p class="section-sub">Real career transformations from people who started exactly where you are today.</p>
+            <div style="text-align:right;margin-top:-20px;"><a href="#" style="color:var(--blue);font-size:14px;font-weight:600;" onclick="showPage('testimonials')">View all stories →</a></div>
+            <div class="story-section">
+                <div>
+                    <img class="story-img" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&q=80" alt="Sarah Jenkins">
+                </div>
+                <div class="story-info">
+                    <div class="class">Class of 2023</div>
+                    <h3>Sarah Jenkins</h3>
+                    <div class="role">Now Frontend Engineer @ Notion</div>
+                    <div class="journey">
+                        <div class="journey-item"><span class="label">BEFORE</span><span>Hotel Management (5 years)</span></div>
+                        <div class="journey-item"><span class="label">AFTER</span><span>Software Engineer • +65% Salary</span></div>
+                    </div>
+                    <p style="font-size:14px;color:var(--gray-600);margin-top:14px;line-height:1.7;">"SKIUP gave me the structure I couldn't find in self-learning. The curriculum focuses exactly on what employers are looking for right now."</p>
+                    <div class="quote-card" style="margin-top:20px;">
+                        <blockquote>"The network was the differentiator. Meeting my mentor who worked at Meta changed everything. I didn't just learn React; I learned how to think like a staff engineer."</blockquote>
+                        <div class="qauthor">
+                            <div class="av">DC</div>
+                            <div>
+                                <div class="qname">David Chen</div>
+                                <div class="qrole">Marketing → QA Automation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="salary-section">
+            <div class="section-title">Investing in Your Future Wealth</div>
+            <div class="salary-grid">
+                <div>
+                    <p style="font-size:15px;color:var(--gray-600);line-height:1.7;margin-top:16px;">The tech industry doesn't just offer high starting salaries—it offers unprecedented upward mobility. Most of our graduates double their starting compensation within 36 months.</p>
+                    <div style="margin-top:24px;display:flex;flex-direction:column;gap:14px;">
+                        <div style="display:flex;gap:10px;align-items:flex-start;">
+                            <div style="color:var(--blue);font-size:18px;margin-top:2px;">✓</div>
+                            <div><strong style="display:block;font-size:14px;">Year 1: Foundation</strong><span style="font-size:13px;color:var(--gray-500);">Entry level roles focusing on rapid skill acquisition and professional network building.</span></div>
+                        </div>
+                        <div style="display:flex;gap:10px;align-items:flex-start;">
+                            <div style="color:var(--blue);font-size:18px;margin-top:2px;">✓</div>
+                            <div><strong style="display:block;font-size:14px;">Year 3: Specialization</strong><span style="font-size:13px;color:var(--gray-500);">Transitioning to Mid-level or Senior roles with significant equity and bonus components.</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="salary-bars">
+                    <h4>Salary Projection Model</h4>
+                    <div class="avg">AVG. DATA 2021-2024</div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span>Pre-SKIUP</span><span class="amount">$34,000</span></div>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width:28%;"></div>
+                        </div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span>Post-Graduation (Year 1)</span><span class="amount">$82,000</span></div>
+                        <div class="bar-track">
+                            <div class="bar-fill primary" style="width:67%;"></div>
+                        </div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span>Mid-Career (Year 3)</span><span class="amount">$125,000+</span></div>
+                        <div class="bar-track">
+                            <div class="bar-fill accent" style="width:100%;"></div>
+                        </div>
+                    </div>
+                    <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--gray-500);">
+                        <span>● Direct Placement</span><span>● Projected Trajectory</span>
+                    </div>
+                </div>
+            </div>
+            <div class="dark-cta">
+                <div>
+                    <h2>Looking for World-Class Talent?</h2>
+                    <p>Our graduates are battle-tested, diverse, and ready to contribute from Day 1. Join 150+ companies that hire directly from SKIUP Academy.</p>
+                    <button class="btn-primary" style="margin-top:20px;">Partner With Us</button>
+                </div>
+                <div class="dark-cta-stats">
+                    <div class="dcs">
+                        <div class="dcs-num">0%</div>
+                        <div class="dcs-label">Placement fees for partners</div>
+                    </div>
+                    <div class="dcs">
+                        <div class="dcs-num">48h</div>
+                        <div class="dcs-label">Response to interview requests</div>
+                    </div>
+                    <div class="dcs">
+                        <div class="dcs-num">98%</div>
+                        <div class="dcs-label">Retention rate after 12 months</div>
+                    </div>
+                    <div class="dcs">
+                        <div class="dcs-num" style="font-size:20px;">Bespoke</div>
+                        <div class="dcs-label">Hiring events and technical screens</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-bottom" style="border-top:none;">
+                <div style="display:flex;gap:24px;flex-wrap:wrap;">
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;" onclick="showPage('testimonials')">Success Stories</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;">Career Services</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;">Hiring Partners</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;" onclick="showPage('privacy')">Privacy Policy</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;" onclick="showPage('terms')">Terms of Service</a>
+                </div>
+                <p style="font-size:13px;color:var(--gray-400);">SKIUP · © 2024 SKIUP Academy</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="testimonials" class="page">
+        <section style="background:var(--bg);padding-bottom:0;">
+            <div style="text-align:center;">
+                <h1 style="font-family:var(--font-head);font-size:52px;font-weight:800;color:var(--gray-900);">Voices of <span style="color:var(--blue);">Transformation</span></h1>
+                <p style="font-size:16px;color:var(--gray-500);margin-top:12px;max-width:500px;margin-left:auto;margin-right:auto;">Our graduates come from retail, healthcare, and hospitality. They left with the skills to build the future. Real stories from real people who redefined their potential.</p>
+                <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:20px;">
+                    <div style="display:flex;">
+                        <div style="width:32px;height:32px;border-radius:50%;background:var(--blue-light);border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--blue);margin-right:-8px;">SJ</div>
+                        <div style="width:32px;height:32px;border-radius:50%;background:var(--teal-light);border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#00A882;margin-right:-8px;">DC</div>
+                        <div style="width:32px;height:32px;border-radius:50%;background:#FFF4ED;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#EA580C;">AK</div>
+                    </div>
+                    <span style="font-size:13px;font-weight:700;color:var(--blue);">500+</span>
+                    <span style="font-size:13px;color:var(--gray-500);">graduates</span>
+                </div>
+            </div>
+            <div class="featured-story" style="padding:60px 80px 80px;">
+                <div class="feat-img">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80" alt="Sarah Jenkins">
+                    <div class="feat-quote">
+                        "I never thought I could code until I found SKIUP."
+                        <div class="qauthor">— Sarah Jenkins</div>
+                    </div>
+                </div>
+                <div class="feat-story">
+                    <div class="feat-badge">✦ FEATURED STORY</div>
+                    <h2>From Retail Manager to Frontend Engineer</h2>
+                    <p>Sarah spent 8 years managing high-end retail stores before deciding she wanted more creative control over her career. In 12 weeks, she mastered React and CSS architecture, landing a role at a leading fintech firm just 20 days after graduation.</p>
+                    <div class="feat-metrics">
+                        <div class="metric">
+                            <div class="metric-num">12wk</div>
+                            <div class="metric-label">Time to hire</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-num">140%</div>
+                            <div class="metric-label">Salary Increase</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="video-section">
+            <div class="video-header">
+                <div>
+                    <h2>Video Spotlights</h2>
+                    <p>Hear the passion directly from our alumni.</p>
+                </div>
+                <a class="view-all" href="#">View All Stories →</a>
+            </div>
+            <div class="video-grid">
+                <div class="video-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Marcus Chen">
+                    <div class="video-overlay">
+                        <div class="play-btn">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="vname">Marcus Chen</div>
+                        <div class="vrole">UX Design @ Stellar Systems</div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Elena Rodriguez">
+                    <div class="video-overlay">
+                        <div class="play-btn">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="vname">Elena Rodriguez</div>
+                        <div class="vrole">Software Dev @ Oracle</div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80" alt="Jordan Miller">
+                    <div class="video-overlay">
+                        <div class="play-btn">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="vname">Jordan Miller</div>
+                        <div class="vrole">Product Mgr @ BloomTech</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="rauthor">
+                        <div class="rav">RV</div>
+                        <div>
+                            <div class="rname">Rohit Verma</div>
+                            <div class="rprev">Former: B.Com Graduate</div>
+                        </div>
+                    </div>
+                    <blockquote>"SKIUP didn't just teach me coding; they taught me how to solve complex problems. I went from accounting ledgers to building core enterprise apps in under six months."</blockquote>
+                    <div class="company-badge">
+                        <div class="role-tag">Software Developer</div>
+                        <div class="company">TCS</div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="rauthor">
+                        <div class="rav">SR</div>
+                        <div>
+                            <div class="rname">Sneha Reddy</div>
+                            <div class="rprev">Former: B.A History</div>
+                        </div>
+                    </div>
+                    <blockquote>"Coming from a humanities background, I was nervous about the transition. SKIUP's curriculum is so well-structured that software testing felt like a natural progression."</blockquote>
+                    <div class="company-badge">
+                        <div class="role-tag">Testing Engineer</div>
+                        <div class="company">Capgemini</div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="rauthor">
+                        <div class="rav">AK</div>
+                        <div>
+                            <div class="rname">Arun Kumar</div>
+                            <div class="rprev">Former: Sales Executive</div>
+                        </div>
+                    </div>
+                    <blockquote>"The portfolio I built at SKIUP was the key. Recruiters were impressed not just with my projects, but how I explained my software architecture."</blockquote>
+                    <div class="company-badge">
+                        <div class="role-tag">Software Developer</div>
+                        <div class="company">Accenture</div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="rauthor">
+                        <div class="rav">DM</div>
+                        <div>
+                            <div class="rname">Divya Menon</div>
+                            <div class="rprev">Former: HR Coordinator</div>
+                        </div>
+                    </div>
+                    <blockquote>"The mentorship is what makes SKIUP different. Whenever I hit a wall, there was an expert or a peer ready to help me debug and keep pushing forward."</blockquote>
+                    <div class="company-badge">
+                        <div class="role-tag">Software Developer</div>
+                        <div class="company">Cognizant</div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="rauthor">
+                        <div class="rav">KR</div>
+                        <div>
+                            <div class="rname">Karthik Rao</div>
+                            <div class="rprev">Former: Operations Trainee</div>
+                        </div>
+                    </div>
+                    <blockquote>"I applied on a whim, thinking I wasn't 'tech enough.' Now I'm writing automation scripts and ensuring software quality. Don't underestimate yourself."</blockquote>
+                    <div class="company-badge">
+                        <div class="role-tag">Testing Engineer</div>
+                        <div class="company">Wipro</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="cta-strip">
+            <h2>Ready to Write Your Story?</h2>
+            <p>Applications for our Summer Cohort are now open. No technical background required—just grit and curiosity.</p>
+            <div class="cta-btns">
+                <button class="btn-primary" onclick="showPage('enrollment')">Join the Next Cohort</button>
+                <button class="btn-white-teal" onclick="showPage('schedule')">Talk to an Alumni</button>
+            </div>
+            <div class="small-note">Limited to 25 seats per track. Early bird discount ends in 4 days.</div>
+        </div>
+
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-logo">SKIUP Academy</div>
+                    <p>Empowering the next generation of digital creators through immersive, high-impact technical training.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Academy</h4>
+                    <a href="#" onclick="showPage('programs')">All Programs</a>
+                    <a href="#" onclick="showPage('outcomes')">Outcome Report</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
+                    <a href="#" onclick="showPage('terms')">Terms of Service</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Social</h4>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">YouTube</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SKIUP Academy. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="schedule" class="page">
+        <div style="padding:60px 80px 20px;">
+            <h1 style="font-family:var(--font-head);font-size:48px;font-weight:800;color:var(--gray-900);">Talk to a <span style="color:var(--blue);">Career<br>Advisor / Alumni</span></h1>
+            <p style="font-size:16px;color:var(--gray-600);margin-top:16px;max-width:460px;line-height:1.7;">Our experts are ready to guide you through your career pivot. We'll help you find the right path for your transition into tech based on your skills, passion, and goals.</p>
+        </div>
+
+        <form class="schedule-layout" id="schedule-form" style="padding-top:20px;">
+            
+            <input type="hidden" name="SheetName" value="Schedules">
+            <input type="hidden" name="Date" id="hidden-date" value="">
+            <input type="hidden" name="Time" id="hidden-time" value="">
+
+            <div style="display:flex;flex-direction:column;gap:20px;">
+                <div class="cal-card">
+                    <h3>Select a Date & Time</h3>
+                    <div class="duration">Duration: 30 minutes</div>
+                    <div class="cal-header">
+                        <span id="cal-month-year" style="font-size:14px;font-weight:600;color:var(--gray-800);"></span>
+                        <div style="display:flex;gap:6px;">
+                            <button type="button" class="cal-nav" id="prev-month">‹</button>
+                            <button type="button" class="cal-nav" id="next-month">›</button>
+                        </div>
+                    </div>
+                    <div class="cal-days" id="cal-days-grid">
+                    </div>
+                    <div class="times-label">Available Times (GMT+5:30)</div>
+                    <div class="time-slots">
+                        <button type="button" class="time-slot">09:00 AM</button>
+                        <button type="button" class="time-slot">10:30 AM</button>
+                        <button type="button" class="time-slot selected">01:00 PM</button>
+                        <button type="button" class="time-slot">02:30 PM</button>
+                        <button type="button" class="time-slot">04:00 PM</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:20px;">
+                <div class="details-card">
+                    <h3>Your Details</h3>
+                    <div class="form-group"><label>Name</label><input type="text" name="Name" required placeholder="Alex Chen"></div>
+                    <div class="form-group"><label>Email</label><input type="email" name="Email" required placeholder="alex@example.com"></div>
+                    <div class="form-group">
+                        <label>Program of Interest</label>
+                        <select name="Program" required>
+                            <option>Full-Stack Development</option>
+                            <option>Frontend Architecture</option>
+                            <option>Backend Engineering</option>
+                            <option>Data Analytics</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="confirm-btn" id="schedule-submit-btn">Confirm Booking</button>
+                </div>
+                <div class="advisor-card">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80" alt="Career Advisor">
+                    <div class="advisor-caption">"The best way to predict your future is to create it."</div>
+                </div>
+            </div>
+        </form>
+
+        <div class="why-speak">
+            <div class="why-speak-title">Why speak with us?</div>
+            <div class="why-speak-sub">We don't just sell courses. We build careers. Every conversation is a step toward your professional evolution.</div>
+            <div class="why-cards">
+                <div class="why-card">
+                    <div class="wicon" style="background:var(--teal-light);">🗺️</div>
+                    <h4>Personalized Roadmap</h4>
+                    <p>A custom learning path designed around your existing experience and career aspirations.</p>
+                </div>
+                <div class="why-card">
+                    <div class="wicon" style="background:var(--blue-light);">💰</div>
+                    <h4>Financial Aid Info</h4>
+                    <p>Explore scholarships, ISA options, and payment plans that make tech education accessible.</p>
+                </div>
+                <div class="why-card">
+                    <div class="wicon" style="background:#FFF4ED;">📊</div>
+                    <h4>Career Outlook</h4>
+                    <p>Real-time data on hiring trends and salary expectations for the roles you're targeting.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-bottom" style="border-top:1px solid var(--gray-200);padding-top:24px;">
+                <div class="nav-logo">SKIUP</div>
+                <div style="display:flex;gap:24px;">
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;" onclick="showPage('privacy')">Privacy Policy</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;" onclick="showPage('terms')">Terms of Service</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;">Contact Support</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;">Careers</a>
+                </div>
+                <p style="font-size:13px;color:var(--gray-400);">© 2024 SKIUP Education. Built for the future of learning.</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="enrollment" class="page">
+        <div style="padding:60px 80px 0;text-align:center;">
+            <span class="badge">START YOUR JOURNEY</span>
+            <h1 style="font-family:var(--font-head);font-size:44px;font-weight:800;color:var(--gray-900);margin-top:8px;">Take the First Step Toward Your<br><span style="color:var(--blue);">Tech Career</span></h1>
+            <p style="font-size:16px;color:var(--gray-500);margin-top:12px;">Join our elite tech curriculum designed to transform your potential into a high-impact engineering career.</p>
+        </div>
+
+        <div class="enroll-layout">
+            <div class="enroll-sidebar">
+                <div class="why-box">
+                    <h3>Why choose SKIUP?</h3>
+                    <div class="why-point">
+                        <div class="wp-icon" style="background:var(--blue-light);">🎯</div>
+                        <div>
+                            <div class="wp-title">100% Placement Focus</div>
+                            <div class="wp-desc">Strategic career coaching and placement support for all graduates.</div>
+                        </div>
+                    </div>
+                    <div class="why-point">
+                        <div class="wp-icon" style="background:var(--teal-light);">👥</div>
+                        <div>
+                            <div class="wp-title">1-on-1 Mentorship</div>
+                            <div class="wp-desc">Get guided by industry leaders from top tech firms globally.</div>
+                        </div>
+                    </div>
+                    <div class="why-point">
+                        <div class="wp-icon" style="background:#FFF4ED;">🔧</div>
+                        <div>
+                            <div class="wp-title">Modern Tech Stack</div>
+                            <div class="wp-desc">Learn the most in-demand technologies used in the Digital Atelier.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cohort-img">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80" alt="Join the Cohort">
+                    <div class="cohort-overlay">
+                        <h4>Join the Cohort</h4>
+                        <p>Next batch starts in 15 days.</p>
+                    </div>
+                </div>
+            </div>
+
+            <form class="form-card" id="enroll-form">
+
+                <div class="form-step">
+                    <div class="step-num">1</div>
+                    <div class="step-title">Personal Information</div>
+                </div>
+                <div class="form-row">
+                    <div class="fg"><label>Full Name</label><input type="text" name="Name" required placeholder="Alex Johnson"></div>
+                    <div class="fg"><label>Email Address</label><input type="email" name="Email" required placeholder="alex@example.com"></div>
+                </div>
+                <div class="form-row">
+                    <div class="fg"><label>Phone Number</label><input type="tel" name="Phone" required placeholder="+1 (555) 000-0000"></div>
+                    <div class="fg"><label>Location</label><input type="text" name="Location" required placeholder="City, Country"></div>
+                </div>
+                <hr class="divider">
+
+                <div class="form-step">
+                    <div class="step-num">2</div>
+                    <div class="step-title">Educational Background</div>
+                </div>
+                <div class="fg"><label>University / Institution</label><input type="text" name="University" required placeholder="State University of Arts"></div>
+                <div class="form-row">
+                    <div class="fg"><label>Degree</label><input type="text" name="Degree" required placeholder="B.A. Graphic Design"></div>
+                    <div class="fg"><label>Graduation Year</label>
+                        <select name="GradYear" required>
+                            <option value="">Select Year</option>
+                            <option>2024</option>
+                            <option>2023</option>
+                            <option>2022</option>
+                            <option>2021</option>
+                            <option>2020</option>
+                            <option>Earlier</option>
+                        </select>
+                    </div>
+                </div>
+                <hr class="divider">
+
+                <input type="hidden" name="SheetName" value="Enrollments">
+                <input type="hidden" name="Program" id="hidden-program" value="Frontend Architecture">
+                <input type="hidden" name="Experience" id="hidden-exp" value="Beginner">
+
+                <div class="form-step">
+                    <div class="step-num">3</div>
+                    <div class="step-title">Program Choice</div>
+                </div>
+                <div class="program-options">
+                    <div class="prog-opt selected" onclick="selectProgram(this, 'Frontend Architecture')">
+                        <h4>Frontend Architecture</h4>
+                        <p>Modern React, Design Systems, UX Engineering</p>
+                    </div>
+                    <div class="prog-opt" onclick="selectProgram(this, 'Backend Engineering')">
+                        <h4>Backend Engineering</h4>
+                        <p>Distributed Systems, Go, Node.js, DB Design</p>
+                    </div>
+                    <div class="prog-opt" onclick="selectProgram(this, 'Fullstack Core')">
+                        <h4>Fullstack Core</h4>
+                        <p>End-to-end product mastery from UI to DB</p>
+                    </div>
+                    <div class="prog-opt" onclick="selectProgram(this, 'Software Testing')">
+                        <h4>Software Testing</h4>
+                        <p>Automation, CI/CD, QA Architectures</p>
+                    </div>
+                </div>
+                <hr class="divider">
+
+                <div class="form-step">
+                    <div class="step-num">4</div>
+                    <div class="step-title">Experience & Motivation</div>
+                </div>
+                <div class="fg">
+                    <label>Experience Level</label>
+                    <div class="exp-options">
+                        <button type="button" class="exp-opt selected" onclick="selectExp(this, 'Beginner')">Beginner</button>
+                        <button type="button" class="exp-opt" onclick="selectExp(this, 'Some knowledge')">Some knowledge</button>
+                        <button type="button" class="exp-opt" onclick="selectExp(this, 'Intermediate')">Intermediate</button>
+                    </div>
+                </div>
+                <div class="fg">
+                    <label>Why do you want to join SKIUP?</label>
+                    <textarea rows="4" name="Motivation" required placeholder="Tell us about your drive and career goals..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-button">Submit Application →</button>
+
+                <p class="form-disclaimer">By submitting, you agree to our <a href="#" onclick="showPage('terms')">Terms of Service</a> and <a href="#" onclick="showPage('privacy')">Privacy Policy</a>. We value your data as much as your code.</p>
+            </form>
+        </div>
+
+        <footer style="border-top:1px solid var(--gray-200);">
+            <div class="footer-bottom">
+                <div class="nav-logo">SKIUP</div>
+                <div style="display:flex;gap:24px;">
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;" onclick="showPage('privacy')">Privacy</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;" onclick="showPage('terms')">Terms</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;">Contact</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;">Support</a>
+                </div>
+                <p style="font-size:13px;color:var(--gray-400);">© 2024 SKIUP EdTech. Crafted in the Digital Atelier.</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="success" class="page">
+        <div class="success-content">
+            <div class="success-icon">
+                <span class="check">✓</span>
+                <span class="confetti">🎉</span>
+            </div>
+            <h1>You're on Your Way!</h1>
+            <p>Thank you for taking the first step toward your new tech career. Our admissions team will review your application and get back to you within 2-3 business days.</p>
+
+            <div class="next-cards">
+                <div class="next-card">
+                    <div class="nc-icon">✉️</div>
+                    <h3>Check Email</h3>
+                    <p>We've sent a confirmation receipt with your application details.</p>
+                </div>
+                <div class="next-card">
+                    <div class="nc-icon">👥</div>
+                    <h3>Join Community</h3>
+                    <p>Connect with future peers in our community Discord server.</p>
+                    <a href="#">Join Discord</a>
+                </div>
+                <div class="next-card">
+                    <div class="nc-icon">📖</div>
+                    <h3>Prep Guides</h3>
+                    <p>Get ahead with our curated free preparation materials.</p>
+                    <a href="#">View Guides</a>
+                </div>
+            </div>
+
+            <div class="success-btns">
+                <button class="btn-primary" onclick="showPage('landing')">Return to Home</button>
+                <button class="btn-teal" onclick="showPage('programs')">Browse More Programs</button>
+            </div>
+        </div>
+
+        <div class="success-image">
+            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80" alt="Students">
+        </div>
+
+        <footer style="background:#fff;border-top:1px solid var(--gray-200);">
+            <div class="footer-bottom">
+                <div class="nav-logo">SKIUP</div>
+                <div style="display:flex;gap:24px;">
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;" onclick="showPage('privacy')">Privacy Policy</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;" onclick="showPage('terms')">Terms of Service</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;">Help Center</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;">Contact Support</a>
+                </div>
+                <p style="font-size:13px;color:var(--gray-400);">© 2024 SKIUP. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="privacy" class="page">
+        <div style="padding:60px 80px 20px; max-width: 800px; margin: 0 auto;">
+            <span class="badge" style="background:var(--gray-100);color:var(--gray-700);">Legal Information</span>
+            <h1 style="font-family:var(--font-head);font-size:44px;font-weight:800;color:var(--gray-900);margin-top:12px;">Privacy Policy</h1>
+            <p style="font-size:14px;color:var(--gray-500);margin-top:12px;">Last Updated: July 14, 2024</p>
+        </div>
+
+        <section style="max-width: 800px; margin: 0 auto; padding-top: 20px; padding-bottom: 80px;">
+            <div style="color:var(--gray-700); line-height: 1.8; font-size: 15px;">
+                <p style="margin-bottom: 24px;">At SKIUP Academy, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our educational services.</p>
+
+                <h3 style="font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--gray-900);margin: 32px 0 12px;">1. Information We Collect</h3>
+                <p style="margin-bottom: 16px;">We may collect information about you in a variety of ways. The information we may collect includes:</p>
+                <ul style="margin-bottom: 24px; padding-left: 20px; color: var(--gray-600);">
+                    <li style="margin-bottom: 8px;"><strong>Personal Data:</strong> Personally identifiable information, such as your name, email address, phone number, and educational background, that you voluntarily give to us when booking a call or enrolling in a program.</li>
+                    <li style="margin-bottom: 8px;"><strong>Derivative Data:</strong> Information our servers automatically collect when you access the site, such as your IP address, your browser type, your operating system, and your access times.</li>
+                </ul>
+
+                <h3 style="font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--gray-900);margin: 32px 0 12px;">2. How We Use Your Information</h3>
+                <p style="margin-bottom: 16px;">Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you to:</p>
+                <ul style="margin-bottom: 24px; padding-left: 20px; color: var(--gray-600);">
+                    <li style="margin-bottom: 8px;">Process your enrollment applications and schedule advisory calls.</li>
+                    <li style="margin-bottom: 8px;">Send you emails regarding your account, curriculum updates, or requested information.</li>
+                    <li style="margin-bottom: 8px;">Compile anonymous statistical data and analysis for use internally to improve our programs.</li>
+                </ul>
+
+                <h3 style="font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--gray-900);margin: 32px 0 12px;">3. Disclosure of Your Information</h3>
+                <p style="margin-bottom: 24px;">We do not sell, trade, or rent your personal identification information to others. We may share generic aggregated demographic information not linked to any personal identification information with our hiring partners and trusted affiliates for the purposes outlined above.</p>
+
+                <h3 style="font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--gray-900);margin: 32px 0 12px;">4. Security of Your Information</h3>
+                <p style="margin-bottom: 24px;">We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable.</p>
+
+                <h3 style="font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--gray-900);margin: 32px 0 12px;">5. Contact Us</h3>
+                <p style="margin-bottom: 8px;">If you have questions or comments about this Privacy Policy, please contact us at:</p>
+                <p style="font-weight: 600; color: var(--blue);">privacy@skiupacademy.com</p>
+            </div>
+        </section>
+
+        <footer style="background:#fff;border-top:1px solid var(--gray-200);">
+            <div class="footer-bottom">
+                <div class="nav-logo">SKIUP</div>
+                <div style="display:flex;gap:24px;">
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;" onclick="showPage('landing')">Home</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;" onclick="showPage('programs')">Programs</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;" onclick="showPage('schedule')">Contact</a>
+                </div>
+                <p style="font-size:13px;color:var(--gray-400);">© 2024 SKIUP. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="terms" class="page">
+        <div style="padding:60px 80px 20px; max-width: 800px; margin: 0 auto;">
+            <span class="badge" style="background:var(--gray-100);color:var(--gray-700);">Legal Information</span>
+            <h1 style="font-family:var(--font-head);font-size:44px;font-weight:800;color:var(--gray-900);margin-top:12px;">Terms of Service</h1>
+            <p style="font-size:14px;color:var(--gray-500);margin-top:12px;">Last Updated: April 14, 2026</p>
+        </div>
+
+        <section style="max-width: 800px; margin: 0 auto; padding-top: 20px; padding-bottom: 80px;">
+            <div style="color:var(--gray-700); line-height: 1.8; font-size: 15px;">
+                <p style="margin-bottom: 24px;">Welcome to SKIUP Academy. By accessing or using our website and educational services, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you may not access our services.</p>
+
+                <h3 style="font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--gray-900);margin: 32px 0 12px;">1. Use of Services</h3>
+                <p style="margin-bottom: 16px;">SKIUP Academy provides specialized technical education and career transition services. You agree to use these services only for lawful educational purposes. You must not:</p>
+                <ul style="margin-bottom: 24px; padding-left: 20px; color: var(--gray-600);">
+                    <li style="margin-bottom: 8px;">Share your account access or curriculum materials with unauthorized third parties.</li>
+                    <li style="margin-bottom: 8px;">Submit false, inaccurate, or misleading information during the enrollment process.</li>
+                    <li style="margin-bottom: 8px;">Use the platform to distribute spam, malware, or engage in disruptive behavior.</li>
+                </ul>
+
+                <h3 style="font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--gray-900);margin: 32px 0 12px;">2. Intellectual Property</h3>
+                <p style="margin-bottom: 24px;">All curriculum, videos, code templates, designs, and text provided by SKIUP Academy are the exclusive property of SKIUP Academy. You are granted a limited, non-exclusive license to use these materials for your personal educational progress. You may not reproduce, resell, or distribute our proprietary content.</p>
+
+                <h3 style="font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--gray-900);margin: 32px 0 12px;">3. Admissions and Code of Conduct</h3>
+                <p style="margin-bottom: 24px;">Admission to SKIUP programs is subject to our review process. We reserve the right to refuse service, terminate accounts, or remove users from a cohort if they violate our Code of Conduct, which includes treating mentors, peers, and staff with professional respect at all times.</p>
+
+                <h3 style="font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--gray-900);margin: 32px 0 12px;">4. Modifications to the Service</h3>
+                <p style="margin-bottom: 24px;">We reserve the right to modify or discontinue, temporarily or permanently, any part of our services or curriculum with or without notice. The tech industry moves fast, and our syllabus will evolve dynamically to reflect current market demands.</p>
+
+                <h3 style="font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--gray-900);margin: 32px 0 12px;">5. Limitation of Liability</h3>
+                <p style="margin-bottom: 24px;">While we boast a high placement rate, SKIUP Academy does not guarantee employment or specific salary outcomes. Your success depends entirely on your personal effort, portfolio quality, and interview performance.</p>
+            </div>
+        </section>
+
+        <footer style="background:#fff;border-top:1px solid var(--gray-200);">
+            <div class="footer-bottom">
+                <div class="nav-logo">SKIUP</div>
+                <div style="display:flex;gap:24px;">
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;" onclick="showPage('landing')">Home</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;" onclick="showPage('programs')">Programs</a>
+                    <a href="#" style="color:var(--gray-500);text-decoration:none;font-size:13px;" onclick="showPage('schedule')">Contact</a>
+                </div>
+                <p style="font-size:13px;color:var(--gray-400);">© 2024 SKIUP. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Add this new function to toggle the menu open/closed
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('open');
+        }
+
+        // Update your existing showPage function to include the close menu action
+        function showPage(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+
+            // Update nav active states
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            const navMap = {
+                programs: 'nav-programs',
+                howitworks: 'nav-howitworks',
+                outcomes: 'nav-outcomes',
+                testimonials: 'nav-testimonials',
+                privacy: '', // Added this line so it doesn't break if id="privacy" is called
+                terms: ''
+            };
+            if (navMap[id]) document.getElementById(navMap[id]).classList.add('active');
+
+            // NEW: Close the mobile menu automatically when a page changes
+            document.querySelector('.nav-links').classList.remove('open');
+
+            window.scrollTo(0, 0);
+        }
+
+        // Smoothly scroll to a specific section on a specific page
+        function scrollToSection(pageId, sectionId) {
+            // 1. Show the correct page first
+            showPage(pageId);
+
+            // 2. Wait a tiny millisecond for the page to render, then scroll
+            setTimeout(() => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    // Calculate position minus 80px to account for the fixed nav bar
+                    const y = section.getBoundingClientRect().top + window.scrollY - 80;
+                    window.scrollTo({
+                        top: y,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 10);
+        }
+
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+
+        // Date selection (ignores inactive past days)
+        // ── DYNAMIC CALENDAR ENGINE ──
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const dayNames = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+
+        let currentDate = new Date(); // Gets today's live date
+        let viewingDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+
+        // Set max booking date to 30 days from today
+        let maxDate = new Date();
+        maxDate.setDate(currentDate.getDate() + 30);
+
+        function renderCalendar() {
+            const monthYearText = document.getElementById("cal-month-year");
+            const daysGrid = document.getElementById("cal-days-grid");
+
+            // Update Header (e.g., "April 2024")
+            monthYearText.innerText = `${monthNames[viewingDate.getMonth()]} ${viewingDate.getFullYear()}`;
+
+            // Clear previous grid
+            daysGrid.innerHTML = '';
+
+            // Render Day Names (MON, TUE, etc.)
+            dayNames.forEach(day => {
+                const header = document.createElement("div");
+                header.className = "cal-day-header";
+                header.innerText = day;
+                daysGrid.appendChild(header);
+            });
+
+            // Calculate blanks needed to align the 1st of the month under the right weekday
+            let firstDay = new Date(viewingDate.getFullYear(), viewingDate.getMonth(), 1).getDay();
+            firstDay = firstDay === 0 ? 6 : firstDay - 1; // Make Monday index 0
+
+            const daysInMonth = new Date(viewingDate.getFullYear(), viewingDate.getMonth() + 1, 0).getDate();
+
+            // Inject blank spaces
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDiv = document.createElement("div");
+                daysGrid.appendChild(emptyDiv);
+            }
+
+            // Inject actual days
+            for (let i = 1; i <= daysInMonth; i++) {
+                const dayDiv = document.createElement("div");
+                dayDiv.className = "cal-day";
+                dayDiv.innerText = i;
+
+                const thisDate = new Date(viewingDate.getFullYear(), viewingDate.getMonth(), i);
+
+                // Strip time so we strictly compare dates
+                thisDate.setHours(0, 0, 0, 0);
+                const todayNorm = new Date(currentDate);
+                todayNorm.setHours(0, 0, 0, 0);
+                const maxNorm = new Date(maxDate);
+                maxNorm.setHours(0, 0, 0, 0);
+
+                // Check if date is in the past OR more than 30 days in the future
+                if (thisDate < todayNorm || thisDate > maxNorm) {
+                    dayDiv.classList.add("inactive");
+                } else {
+                    // Click listener for valid dates
+                    dayDiv.addEventListener("click", function() {
+                        document.querySelectorAll('.cal-day').forEach(d => d.classList.remove('selected'));
+                        this.classList.add('selected');
+                        updateTimeSlots(thisDate);
+                        document.getElementById('hidden-date').value = thisDate.toDateString(); // NEW
+                    });
+
+                    // Pre-select today's date automatically
+                    if (thisDate.getTime() === todayNorm.getTime()) {
+                        dayDiv.classList.add("selected");
+                        updateTimeSlots(thisDate);
+                        document.getElementById('hidden-date').value = thisDate.toDateString(); // NEW
+                    }
+                }
+
+                daysGrid.appendChild(dayDiv);
+            }
+        }
+
+        // Calendar Navigation Arrows
+        document.getElementById("prev-month").addEventListener("click", () => {
+            const todayMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            if (viewingDate > todayMonth) { // Only go back if we aren't already looking at the current month
+                viewingDate.setMonth(viewingDate.getMonth() - 1);
+                renderCalendar();
+            }
+        });
+
+        document.getElementById("next-month").addEventListener("click", () => {
+            const maxMonth = new Date(maxDate.getFullYear(), maxDate.getMonth(), 1);
+            if (viewingDate < maxMonth) { // Only go forward if there are valid days next month
+                viewingDate.setMonth(viewingDate.getMonth() + 1);
+                renderCalendar();
+            }
+        });
+
+        // Initialize Calendar on load
+        renderCalendar();
+
+        function selectProgram(el, programName) {
+            el.closest('.program-options').querySelectorAll('.prog-opt').forEach(o => o.classList.remove('selected'));
+            el.classList.add('selected');
+            document.getElementById('hidden-program').value = programName;
+        }
+
+        function selectExp(el, expLevel) {
+            el.closest('.exp-options').querySelectorAll('.exp-opt').forEach(o => o.classList.remove('selected'));
+            el.classList.add('selected');
+            document.getElementById('hidden-exp').value = expLevel;
+        }
+
+        // ── DYNAMIC TIME SLOT ENGINE ──
+        function updateTimeSlots(selectedDate) {
+            const now = new Date();
+            // Check if the selected date is exactly today
+            const isToday = selectedDate.getDate() === now.getDate() &&
+                selectedDate.getMonth() === now.getMonth() &&
+                selectedDate.getFullYear() === now.getFullYear();
+
+            const timeButtons = document.querySelectorAll('.time-slot');
+            let firstAvailableSelected = false;
+
+            timeButtons.forEach(btn => {
+                // Reset classes
+                btn.classList.remove('inactive', 'selected');
+
+                if (isToday) {
+                    // Parse the time from the button text (e.g., "09:00 AM")
+                    const timeText = btn.innerText.trim();
+                    const [timeStr, period] = timeText.split(' ');
+                    let [hours, minutes] = timeStr.split(':').map(Number);
+
+                    // Convert to 24-hour format for correct math comparison
+                    if (period === 'PM' && hours !== 12) hours += 12;
+                    if (period === 'AM' && hours === 12) hours = 0;
+
+                    const slotTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
+
+                    // If the time slot is in the past, disable it
+                    if (slotTime < now) {
+                        btn.classList.add('inactive');
+                    } else if (!firstAvailableSelected) {
+                        // Automatically select the next available valid time
+                        btn.classList.add('selected');
+                        document.getElementById('hidden-time').value = btn.innerText.trim(); // Captures time
+                        firstAvailableSelected = true;
+                    }
+                } else {
+                    // It's a future date, so select the first time slot by default
+                    if (btn === timeButtons[0]) {
+                        btn.classList.add('selected');
+                        document.getElementById('hidden-time').value = btn.innerText.trim(); // Captures time
+                    }
+                }
+            });
+        }
+
+        // Standard click behavior for time slots
+        document.querySelectorAll('.time-slot').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (!this.classList.contains('inactive')) {
+                    this.closest('.time-slots').querySelectorAll('.time-slot').forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                    document.getElementById('hidden-time').value = this.innerText.trim(); // Captures time
+                }
+            });
+        });
+
+        // Form Submission to Google Sheets
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbypOaucipECASdtMTwblxV7EoRr7rQ38GRSL-oQqvRlvIAf90oy3PrjFLCwgNc2bL-N/exec'; // <--- PASTE YOUR GOOGLE SCRIPT URL HERE
+        
+        // Enrollment form
+        const enrollForm = document.getElementById('enroll-form');
+        const enrollSubmitBtn = document.getElementById('submit-button');
+
+        if(enrollForm) {
+            enrollForm.addEventListener('submit', e => {
+                e.preventDefault();
+
+                // Change button text to show it's working
+                const originalText = enrollSubmitBtn.innerText;
+                enrollSubmitBtn.innerText = "Submitting...";
+                enrollSubmitBtn.disabled = true;
+
+                fetch(scriptURL, {
+                        method: 'POST',
+                        body: new FormData(enrollForm)
+                    })
+                    .then(response => {
+                        // Reset form and button
+                        enrollForm.reset();
+                        enrollSubmitBtn.innerText = originalText;
+                        enrollSubmitBtn.disabled = false;
+
+                        // Show success page
+                        showPage('success');
+                    })
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        enrollSubmitBtn.innerText = "Error. Please try again.";
+                        enrollSubmitBtn.disabled = false;
+                    });
+            });
+        }
+
+        // Schedule form
+        const scheduleForm = document.getElementById('schedule-form');
+        const scheduleSubmitBtn = document.getElementById('schedule-submit-btn');
+
+        if(scheduleForm) {
+            scheduleForm.addEventListener('submit', e => {
+                e.preventDefault();
+
+                const originalText = scheduleSubmitBtn.innerText;
+                scheduleSubmitBtn.innerText = "Confirming...";
+                scheduleSubmitBtn.disabled = true;
+
+                fetch(scriptURL, { method: 'POST', body: new FormData(scheduleForm) })
+                    .then(response => {
+                        scheduleForm.reset();
+                        scheduleSubmitBtn.innerText = originalText;
+                        scheduleSubmitBtn.disabled = false;
+                        showPage('success');
+                    })
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        scheduleSubmitBtn.innerText = "Error. Please try again.";
+                        scheduleSubmitBtn.disabled = false;
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>
